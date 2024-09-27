@@ -11,22 +11,30 @@ import Sort from '../components/PizzaBlock/Sort';
     const [sortType, setSortType] = React.useState({
       name: "популярности",
       sortProperty: "rating",
-    })
+    });
 
   React.useEffect(() => {
-    fetch("https://66f121e741537919154fa987.mockapi.io/Items")
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => {
-      setItems(json);
-      setIsLoading(false);
-    });
-  },[]);
+    setIsLoading(true);
+
+    const sortBy = sortType.sortProperty.replace('-', '');
+    const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
+
+    fetch(`https://66f121e741537919154fa987.mockapi.io/Items?${category}&sortBy=${sortBy}&order=${order}`)
+
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+        setIsLoading(false);
+      });
+    window.scrollTo(0, 0);
+  },[categoryId, sortType]);
 
   return (
     <div className='container'>
-      <div className='content-top'>
+      <div className='content__top'>
         <Categories 
           value={categoryId}
           onChangeCategory={(index) => setCategoryId(index)}
