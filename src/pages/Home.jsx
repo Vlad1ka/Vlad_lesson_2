@@ -4,8 +4,11 @@ import Skeleton from '../components/PizzaBlock/Skeleton';
 import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import Pagination from '../components/Pagination';
+import { SearchContext } from '../App';
 
- const Home = ({ searchValue }) => {
+ const Home = ( ) => {
+
+    const { searchValue } = React.useContext(SearchContext);
     const [items, setItems]=React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const [categoryId, setCategoryId] = React.useState(0);
@@ -23,7 +26,7 @@ import Pagination from '../components/Pagination';
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : "";
 
-    fetch(`https://66f121e741537919154fa987.mockapi.io/Items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${search}`)
+    fetch(`https://66f121e741537919154fa987.mockapi.io/Items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`)
 
       .then((res) => {
         return res.json();
