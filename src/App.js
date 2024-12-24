@@ -13,7 +13,8 @@ function App() {
   const [searchValue, setSearchValue] = React.useState('');
 
   return (
-      <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+    <div className="wrapper">
+        <SearchContext.Provider value={{ searchValue, setSearchValue }}>
         <Header/>
         <div className="content">
             <Routes>
@@ -23,6 +24,7 @@ function App() {
             </Routes>
         </div>
       </SearchContext.Provider>
+    </div>
   );
 }
 
