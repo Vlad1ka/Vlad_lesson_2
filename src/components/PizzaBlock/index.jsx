@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem } from '../../redux/slices/cartSlice';
-import CartItem from '../components/CartItem';
+import CartItem from '../CartItem';
 
 const typeNames = ["тонкое", "традиционное"];
 

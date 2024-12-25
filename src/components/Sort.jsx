@@ -24,19 +24,19 @@ const Sort = () => {
         setOpen(false);
     };
 
-    React.useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (!event.path.includes(sortRef.current)) {
-          setOpen(false);
-        }
-      }
+    // React.useEffect(() => {
+    //   const handleClickOutside = (event) => {
+    //     if (!event.path.includes(sortRef.current)) {
+    //       setOpen(false);
+    //     }
+    //   }
 
-      document.body.addEventListener('click', handleClickOutside);
+    //   document.body.addEventListener('click', handleClickOutside);
 
-      return () => {
-        document.body.removeEventListener('click', handleClickOutside);
-      }
-    }, []);
+    //   return () => {
+    //     document.body.removeEventListener('click', handleClickOutside);
+    //   }
+    // }, []);
 
   return (
     <div ref={sortRef} className="sort">
